@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true">
+	
+	<!-- Stop output INFO at start -->
+	<statusListener class="ch.qos.logback.core.status.NopStatusListener" /> 
+	
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{ISO8601} %-5p [%t] %c - %m%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<property name="org.neotech.tmb.log" value="${java.io.tmpdir}"></property>
+	<property resource="tmb-app.properties" />
+
+	<appender name="LOG-APP"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{ISO8601} %-5p [%t] %c - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${org.neotech.tmb.log}tmb.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<logger name="org.neotech.tmb">
+		<level value="DEBUG" />
+		<appender-ref ref="LOG-APP" />
+	</logger>
+
+	<root>
+		<level value="WARN" />
+	</root>
+
+</configuration>
