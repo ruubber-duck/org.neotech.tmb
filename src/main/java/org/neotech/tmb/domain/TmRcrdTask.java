@@ -18,8 +18,8 @@ public class TmRcrdTask {
 
 	/* Class */
 
-	private static final long DELAY_PRODUSER = 5000L;
-	private static final long DELAY_CONSUMER = 1000L;	
+	private static final long DELAY_PRODUSER = 1000L;
+	private static final long DELAY_CONSUMER = 100L;	
 	private static final Logger LOG = LoggerFactory.getLogger(TmRcrdTask.class); 
 
 	/* Inject */
