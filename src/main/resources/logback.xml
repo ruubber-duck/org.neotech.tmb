@@ -11,7 +11,7 @@
 	</appender>
 
 
-	<property name="org.neotech.tmb.log" value="${java.io.tmpdir}"></property>
+	<property name="org.neotech.tmb.log" value="./"></property>
 	<property resource="tmb-app.properties" />
 
 	<appender name="LOG-APP"
